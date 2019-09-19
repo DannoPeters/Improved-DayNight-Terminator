@@ -206,10 +206,7 @@ def calcHourAngleSunrise( lat, solarDec, solarDepression=0, altitude=0):
     #Using standard ISA Lapse Rates
     pressure = 101 #kiloPascal
     temperature = 10 #celcius
-    '''if altitude < 11000:
-                    temperature = 10.0 - (6.5/1000)*altitude #Celcius
-                else if altitude < 20000:
-                    temperature = -56.5 #Celcius'''
+    
     atmosphericCorr = (pressure/101)*(283/(273+temperature))
     altCorr = -2.076*numpy.sqrt(altitude)/60 #simple version more complex is below (appear to agree within error)
     HAarg = (numpy.sin(numpy.radians(-0.83*atmosphericCorr+altCorr) - numpy.radians(solarDepression) ) - (numpy.sin(LattitudeRad)*numpy.sin(solarDecRad )) ) / ( numpy.cos(LattitudeRad)*numpy.cos(solarDecRad ) )
