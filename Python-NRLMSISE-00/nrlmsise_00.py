@@ -50,6 +50,37 @@ This is the main program that contains all the functions
  */
 """
 
+"""
+Required Inputs:
+struct nrlmsise_input {
+    int year;      /* year, currently ignored */
+    int doy;       /* day of year */
+    double sec;    /* seconds in day (UT) */
+    double alt;    /* altitude in kilometers */
+    double g_lat;  /* geodetic latitude */
+    double g_long; /* geodetic longitude */
+    double lst;    /* local apparent solar time (hours), see note below */
+    double f107A;  /* 81 day average of F10.7 flux (centered on doy) */
+    double f107;   /* daily F10.7 flux for previous day */
+    double ap;     /* magnetic index(daily) */
+    struct ap_array *ap_a; /* see below */
+};
+
+struct ap_array {
+    double a[7];   
+};
+/* Array containing the following magnetic values:
+ *   0 : daily AP
+ *   1 : 3 hr AP index for current time
+ *   2 : 3 hr AP index for 3 hrs before current time
+ *   3 : 3 hr AP index for 6 hrs before current time
+ *   4 : 3 hr AP index for 9 hrs before current time
+ *   5 : Average of eight 3 hr AP indicies from 12 to 33 hrs 
+ *           prior to current time
+ *   6 : Average of eight 3 hr AP indicies from 36 to 57 hrs 
+ *           prior to current time 
+ */
+"""
 
 from nrlmsise_00_header import *
 from math import *
