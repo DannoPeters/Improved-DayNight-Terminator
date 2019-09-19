@@ -413,6 +413,7 @@ def getDate(minPastMidnight, date=datetime.datetime(2000,1,1)):
 #######################################################################################################################################################
 
 def sunRise(date, lat, lon, elevation=0, UTCoffset=0, daylightSavings=0):
+    
     Rise, Set = calcSunRiseSet(getJD(date), lat, lon, UTCoffset, daylightSavings, elevation)
     Rise = getDate(Rise, date)
     return Rise
