@@ -27,6 +27,29 @@ This is the main program that contains all the functions
  */
 """
 
+"""
+/*
+ *   NOTES ON INPUT VARIABLES: 
+ *      UT, Local Time, and Longitude are used independently in the
+ *      model and are not of equal importance for every situation.  
+ *      For the most physically realistic calculation these three
+ *      variables should be consistent (lst=sec/3600 + g_long/15).
+ *      The Equation of Time departures from the above formula
+ *      for apparent local time can be included if available but
+ *      are of minor importance.
+ *
+ *      f107 and f107A values used to generate the model correspond
+ *      to the 10.7 cm radio flux at the actual distance of the Earth
+ *      from the Sun rather than the radio flux at 1 AU. The following
+ *      site provides both classes of values:
+ *      ftp://ftp.ngdc.noaa.gov/STP/SOLAR_DATA/SOLAR_RADIO/FLUX/
+ *
+ *      f107, f107A, and ap effects are neither large nor well
+ *      established below 80 km and these parameters should be set to
+ *      150., 150., and 4. respectively.
+ */
+"""
+
 
 from nrlmsise_00_header import *
 from math import *
