@@ -922,6 +922,7 @@ def glob7s(p, Input, flags):
 /* ------------------------------------------------------------------- */
 /* ------------------------------- GTD7 ------------------------------ */
 /* ------------------------------------------------------------------- */
+Neutral Atmosphere Empircial Model from the surface to lower exosphere.
 '''
 def gtd7(Input, flags, output):
     mn3 = 5
