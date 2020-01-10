@@ -497,6 +497,8 @@ def twilightType(date, lat, lon, elevation=0, UTCoffset=0, daylightSavings=0):
 
 
 def test():
+    atmosphere = msise00.run(time=date, altkm=elevation, glat=lat, glon=lon)
+    print(atmosphere)
     date = datetime.datetime(2019,8,14)
     lat = 52.1332
     lon = -106.6700
