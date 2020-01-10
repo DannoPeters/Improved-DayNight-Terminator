@@ -39,6 +39,36 @@ class Coord:
 
 
 
+'''radarGateCalc
+		Finds the GPS centre of all of the gates for a specific radar
+
+	Inputs:	lat1 - iniital lattitude, decimal degrees
+			lon1 - initial longitude, decimal degrees
+			boresight - radial direction of radar relitive to true noth, decimal degrees
+			gates - number of range gates
+			gatewidth - physical distance of gates (km)
+			beams - number of beams
+			beamwidth - radial width of beams
+
+	Output:	lat2 - final lattitude, decinal degrees
+			lon2 - final longitude, decimal degrees
+'''
+
+def radarGateCalc(lat1, lon1, boresight, gates, gatewidth, beams, beamwidth):
+	#coords = [[[0]*2 ] * (beams+1)] * (gates+1) #array of beam and gate locations
+	latitudes = numpy.empty([17,76])
+	longitudes = numpy.empty([17,76])
+	beamCount = 0
+	while beamCount <= beams:
+		gateCount = 0
+		while gateCount <= gates:
+			latitudes[beamCount][gateCount], longitudes[beamCount][gateCount] = radialDistance(lat1, lon1, (boresight-((beams/2)*beamwidth)+((beamCount*beamwidth))), (gateCount)*gatewidth, 'km')
+			gateCount += 1
+		beamCount += 1
+	numpy.savetxt("SuperDARN-SAS-BeamGateCorners-Lattitude.csv", latitudes, delimiter=",")
+	numpy.savetxt("SuperDARN-SAS-BeamGateCorners-Longitude.csv", longitudes, delimiter=",")
+	
+
 
 
 
@@ -210,4 +240,9 @@ def deg2DMS(lat, lon):
 #for deg in range (0,360, 5):
 #	print(radialDistance(52.142556, -106.616329,deg, 3000, 'km'))
 
-print(radialDistance(52.142556, -106.616329, 88, 3233, 'km'))
+#print(radialDistance(52.142556, -106.616329, 88, 3233, 'km'))
+radarGateCalc(52.160, -106.530, 23.1, 75, 45, 16, 3.24)
+
+
+
+
