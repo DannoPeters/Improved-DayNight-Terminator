@@ -59,14 +59,16 @@ def radarGateCalc(lat1, lon1, boresight, gates, gatewidth, beams, beamwidth):
 	latitudes = numpy.empty([17,76])
 	longitudes = numpy.empty([17,76])
 	beamCount = 0
+	#print("lattitude, longitude")
 	while beamCount <= beams:
 		gateCount = 0
 		while gateCount <= gates:
 			latitudes[beamCount][gateCount], longitudes[beamCount][gateCount] = radialDistance(lat1, lon1, (boresight-((beams/2)*beamwidth)+((beamCount*beamwidth))), (gateCount)*gatewidth, 'km')
+			#print(latitudes[beamCount][gateCount], ", ", longitudes[beamCount][gateCount])
 			gateCount += 1
 		beamCount += 1
-	numpy.savetxt("SuperDARN-SAS-BeamGateCorners-Lattitude.csv", latitudes, delimiter=",")
-	numpy.savetxt("SuperDARN-SAS-BeamGateCorners-Longitude.csv", longitudes, delimiter=",")
+	numpy.savetxt("SuperDARN-SAS-BeamGateCorners-Lattitude.csv", latitudes, delimiter=",", fmt='%f')
+	numpy.savetxt("SuperDARN-SAS-BeamGateCorners-Longitude.csv", longitudes, delimiter=",", fmt='%f')
 	
 
 
